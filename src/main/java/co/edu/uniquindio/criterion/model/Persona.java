@@ -7,7 +7,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.UniqueElements;
 
 import java.io.Serializable;
 
@@ -46,7 +45,6 @@ public class Persona implements Serializable {
     private String direccion;
 
     @Column(nullable = false, length = 100, unique = true)
-    @UniqueElements(message = "El usuario debe tener un nombre de usuario unico")
     @NotEmpty(message = "El usuario debe tener un nombre de usuario")
     private String nombreDeUsuario;
 

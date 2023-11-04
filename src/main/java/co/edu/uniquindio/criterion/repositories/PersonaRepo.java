@@ -9,5 +9,5 @@ public interface PersonaRepo extends JpaRepository<Persona, String> {
 
     Persona findByNombreDeUsuario(String nombre);
 
-
+    Persona findByEmail(String email);
 }

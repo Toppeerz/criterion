@@ -44,17 +44,19 @@
     -fx-text-fill: black;
     -fx-font-weight: bold;
     -fx-min-width: 100px; /* Ajusta este valor según tus necesidades */
+    -fx-border-color: black; /* Color de la línea de separación */
+    -fx-border-width: 0 1px;
 }
 
 .table-view .table-row-cell {
-    -fx-background-color: white;
     -fx-text-fill: black;
 }
 
 .table-view .table-cell {
-    -fx-background-color: white;
     -fx-text-fill: black;
     -fx-wrap-text: true;
+    -fx-border-color: #000000; /* Color del borde */
+    -fx-border-width: 0.5;
 }
 
 .combo-box {
@@ -78,4 +80,18 @@
 .combo-box .button .arrow {
     -fx-background-color: black;
 }
+.combo-box .list-cell:hover {
+    -fx-background-color:steelblue;
+    -fx-text-fill: white;
+}
+.table-view .table-row-cell:selected {
+    -fx-background: steelblue;
+    -fx-text-fill: white;
+}
+
+.table-view .table-cell:selected {
+    -fx-background: steelblue;
+    -fx-text-fill: white;
+}
+
 

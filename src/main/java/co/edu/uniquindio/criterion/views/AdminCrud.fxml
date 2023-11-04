@@ -62,10 +62,10 @@
             <Label layoutX="460.0" layoutY="54.0" text="Correo:" />
             <TextField fx:id="txtCorreo" layoutX="547.0" layoutY="53.0" prefHeight="25.0" prefWidth="199.0" />
             <Label layoutX="461.0" layoutY="151.0" text="Tipo de usuario:" />
-            <ComboBox fx:id="tipoUsuario" layoutX="590.0" layoutY="151.0" prefWidth="150.0" promptText="Seleccione el tipo" />
-            <Label layoutX="458.0" layoutY="194.0" text="Especialización:" />
-            <ComboBox fx:id="especializacionAbogado" layoutX="590.0" layoutY="193.0" prefWidth="150.0" promptText="Seleccione el tipo" />
-            <Label layoutX="133.0" layoutY="195.0" prefHeight="25.0" prefWidth="153.0" text="Numero de licencia:" />
+            <ComboBox fx:id="tipoUsuario" layoutX="590.0" layoutY="151.0" prefWidth="150.0" />
+            <Label fx:id="labelEspecializacion" layoutX="458.0" layoutY="194.0" text="Especialización:" />
+            <ComboBox fx:id="especializacionAbogado" layoutX="590.0" layoutY="193.0" prefWidth="150.0" />
+            <Label fx:id="labelNumeroLicencia" layoutX="133.0" layoutY="195.0" prefHeight="25.0" prefWidth="153.0" text="Numero de licencia:" />
             <TextField fx:id="txtLicencia" layoutX="288.0" layoutY="194.0" prefHeight="26.0" prefWidth="160.0" />
          </children>
       </AnchorPane>
