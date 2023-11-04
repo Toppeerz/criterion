@@ -1,0 +1,81 @@
+.text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: black;
+    -fx-text-fill: black;
+}
+
+.label {
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.button {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 0;
+}
+
+.button:hover {
+    -fx-background-color: lightgray;
+}
+
+.button:pressed {
+    -fx-background-color: gray;
+}
+
+#labelContrasenia{
+    -fx-alignment: top-right;
+}
+#txtError {
+    -fx-text-fill: red;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+.table-view .column-header {
+    -fx-background-color: #f2f2f2;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-min-width: 100px; /* Ajusta este valor según tus necesidades */
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.table-view .table-cell {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-wrap-text: true;
+}
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-text-fill: black;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.combo-box .button {
+    -fx-background-color: #f2f2f2;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+
+.combo-box .button .arrow {
+    -fx-background-color: black;
+}
+
