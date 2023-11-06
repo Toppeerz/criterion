@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="673.0" prefWidth="1037.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.criterion.controllers.AsesorController">
+   <top>
+      <AnchorPane prefHeight="75.0" prefWidth="650.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnCerrarSesion" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="114.0" text="&lt;-- Cerrar sesión" />
+            <Label blendMode="MULTIPLY" layoutX="33.0" layoutY="49.0" prefHeight="25.0" prefWidth="99.0" text="Clientes" textAlignment="CENTER" textFill="#971b1b" />
+            <Button fx:id="btnActualizarInfo" layoutX="829.0" layoutY="14.0" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="27.0" prefWidth="175.0" text="Actualizar mi información" />
+            <Button fx:id="btnAbrirVistaClientes" layoutX="618.0" layoutY="14.0" mnemonicParsing="false" onAction="#abrirVistaClientes" prefHeight="27.0" prefWidth="175.0" text="Gestionar clientes" />
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="879.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tablaClientes" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#abrirDetallesCaso" prefHeight="93.0" prefWidth="1037.0">
+              <columns>
+                <TableColumn fx:id="clienteColumnaNombre" minWidth="1.0" prefWidth="34.0" text="Nombre" />
+                <TableColumn fx:id="clienteColumnaCedula" minWidth="-Infinity" prefWidth="122.0" text="Cedula" />
+                  <TableColumn fx:id="clienteColumnaCorreo" minWidth="-Infinity" prefWidth="117.0" text="Correo" />
+                  <TableColumn fx:id="clienteColumnaDireccion" minWidth="-Infinity" prefWidth="266.0" text="Direccion" />
+                  <TableColumn fx:id="clienteColumnaTelefono" minWidth="-Infinity" prefWidth="147.0" text="Telefono" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <TextField fx:id="buscadorClientes" layoutX="117.0" layoutY="1.0" prefHeight="26.0" prefWidth="270.0" />
+            <Label layoutX="33.0" layoutY="1.0" prefHeight="25.0" prefWidth="77.0" text="Buscar:" />
+            <Label blendMode="MULTIPLY" layoutX="14.0" layoutY="325.0" prefHeight="25.0" prefWidth="49.0" text="Casos" textAlignment="CENTER" textFill="#971b1b" />
+            <TextField fx:id="buscadorCasos" layoutX="103.0" layoutY="449.0" prefHeight="26.0" prefWidth="270.0" />
+            <Label layoutX="19.0" layoutY="449.0" prefHeight="25.0" prefWidth="77.0" text="Buscar:" />
+            <TableView fx:id="tablaCasos" layoutY="483.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#abrirDetallesCaso" prefHeight="115.0" prefWidth="1037.0">
+               <columns>
+                  <TableColumn fx:id="casoColumnaId" minWidth="1.0" prefWidth="34.0" text="ID" />
+                  <TableColumn fx:id="casoColumnaDescripcion" minWidth="-Infinity" prefWidth="166.0" text="Descripcion" />
+                  <TableColumn fx:id="casoColumnaEstado" minWidth="-Infinity" prefWidth="66.0" text="Estado" />
+                  <TableColumn fx:id="casoColumnaFechaInicio" minWidth="-Infinity" prefWidth="132.0" text="Fecha de inicio" />
+                  <TableColumn fx:id="casoColumnaFechaCierre" minWidth="-Infinity" prefWidth="129.0" text="Fecha de cierre" />
+                  <TableColumn fx:id="casoColumnaEspecializacion" minWidth="-Infinity" prefWidth="123.0" text="Especializacion" />
+                  <TableColumn fx:id="casoColumnaNombreCliente" minWidth="-Infinity" prefWidth="183.0" text="Nombre del cliente" />
+                  <TableColumn fx:id="casoColumnaNombreAbogado" minWidth="-Infinity" prefWidth="203.0" text="Nombre del abogado" />
+               </columns>
+            </TableView>
+            <Label layoutX="39.0" layoutY="368.0" prefHeight="25.0" prefWidth="99.0" text="Descripcion:" />
+            <TextField fx:id="txtDescripcion" layoutX="143.0" layoutY="367.0" prefHeight="26.0" prefWidth="191.0" />
+            <TableView fx:id="tablaAbogados" layoutY="216.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#abrirDetallesCaso" prefHeight="109.0" prefWidth="1037.0">
+               <columns>
+                  <TableColumn fx:id="abogadoColumnaNombre" minWidth="1.0" prefWidth="135.0" text="Nombre" />
+                  <TableColumn fx:id="abogadoColumnaCedula" minWidth="-Infinity" prefWidth="77.0" text="Cedula" />
+                  <TableColumn fx:id="abogadoColumnaCorreo" minWidth="-Infinity" prefWidth="134.0" text="Correo" />
+                  <TableColumn fx:id="abogadoColumnaDireccion" minWidth="-Infinity" prefWidth="118.0" text="Direccion" />
+                  <TableColumn fx:id="abogadoColumnaTelefono" minWidth="-Infinity" prefWidth="94.0" text="Telefono" />
+                  <TableColumn fx:id="abogadoColumnaLicencia" minWidth="-Infinity" prefWidth="153.0" text="Numero de licencia" />
+                  <TableColumn fx:id="abogadoColumnaEspecializacion" minWidth="-Infinity" prefWidth="137.0" text="Especializacion" />
+                  <TableColumn fx:id="abogadoColumnaFechaInicio" minWidth="-Infinity" prefWidth="185.0" text="Fecha de inicio de firma" />
+               </columns>
+            </TableView>
+            <TextField fx:id="buscadorAbogados" layoutX="96.0" layoutY="175.0" prefHeight="26.0" prefWidth="270.0" />
+            <Label layoutX="20.0" layoutY="176.0" prefHeight="25.0" prefWidth="77.0" text="Buscar:" />
+            <Label blendMode="MULTIPLY" layoutX="20.0" layoutY="141.0" prefHeight="25.0" prefWidth="78.0" text="Abogados" textAlignment="CENTER" textFill="#971b1b" />
+            <DatePicker fx:id="fechaCierre" layoutX="576.0" layoutY="368.0" />
+            <Label layoutX="415.0" layoutY="369.0" prefHeight="25.0" prefWidth="125.0" text="Fecha de cierre:" />
+            <Button fx:id="btnCrearCaso" layoutX="855.0" layoutY="354.0" mnemonicParsing="false" onAction="#crearCaso" prefHeight="27.0" prefWidth="113.0" text="Crear caso" />
+            <Button fx:id="btnActualizarCaso" layoutX="855.0" layoutY="393.0" mnemonicParsing="false" onAction="#actualizarCaso" prefHeight="27.0" prefWidth="113.0" text="Actualizar caso" />
+            <Button fx:id="btnCancelarCaso" layoutX="855.0" layoutY="436.0" mnemonicParsing="false" onAction="#cancelarCaso" prefHeight="27.0" prefWidth="113.0" text="Cancelar caso" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

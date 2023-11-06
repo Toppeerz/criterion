@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="879.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.criterion.controllers.ActualizarPersonaController">
+   <top>
+      <AnchorPane prefHeight="75.0" prefWidth="650.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnVolver" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#volver" prefHeight="25.0" prefWidth="114.0" text="&lt;-- Cerrar sesión" />
+            <Label blendMode="MULTIPLY" layoutX="379.0" layoutY="29.0" prefHeight="25.0" prefWidth="122.0" text="Mi Información" textAlignment="CENTER" textFill="#971b1b" />
+         </children>
+      </AnchorPane>
+   </top>
+   <bottom>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="650.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label blendMode="MULTIPLY" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="164.0" text="Cambiar información" textAlignment="CENTER" textFill="#971b1b" />
+            <Button fx:id="btnActualizar" layoutX="282.0" layoutY="241.0" mnemonicParsing="false" onAction="#actualizar" prefHeight="25.0" prefWidth="77.0" text="Actualizar" />
+            <Button fx:id="btnLimpiar" layoutX="474.0" layoutY="241.0" mnemonicParsing="false" onAction="#limpiar" prefHeight="25.0" prefWidth="77.0" text="Limpiar" />
+            <TextField fx:id="txtNombre" layoutX="221.0" layoutY="57.0" prefHeight="26.0" prefWidth="199.0" />
+            <Label layoutX="142.0" layoutY="57.0" prefHeight="25.0" prefWidth="72.0" text="Nombre:" />
+            <Label layoutX="141.0" layoutY="123.0" prefHeight="25.0" prefWidth="75.0" text="Telefono:" />
+            <TextField fx:id="txtTelefono" layoutX="221.0" layoutY="122.0" prefHeight="26.0" prefWidth="199.0" />
+            <Label layoutX="452.0" layoutY="58.0" prefHeight="25.0" prefWidth="60.0" text="Correo:" />
+            <TextField fx:id="txtCorreo" layoutX="517.0" layoutY="57.0" prefHeight="26.0" prefWidth="199.0" />
+            <Label layoutX="446.0" layoutY="123.0" prefHeight="25.0" prefWidth="66.0" text="Usuario:" />
+            <TextField fx:id="txtUsuario" layoutX="517.0" layoutY="122.0" prefHeight="26.0" prefWidth="199.0" />
+            <Label layoutX="129.0" layoutY="180.0" prefHeight="25.0" prefWidth="79.0" text="Direccion:" />
+            <TextField fx:id="txtDireccion" layoutX="208.0" layoutY="180.0" prefHeight="26.0" prefWidth="199.0" />
+            <Label layoutX="423.0" layoutY="180.0" prefHeight="25.0" prefWidth="91.0" text="Contraseña:" />
+            <TextField fx:id="txtContrasenia" layoutX="517.0" layoutY="180.0" prefHeight="26.0" prefWidth="199.0" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <center>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="labelNombre" layoutX="157.0" layoutY="11.0" prefHeight="25.0" prefWidth="298.0" text="Nombre:" />
+            <Label fx:id="labelTelefono" layoutX="157.0" layoutY="53.0" prefHeight="25.0" prefWidth="296.0" text="Telefono:" />
+            <Label fx:id="labelDireccion" layoutX="156.0" layoutY="105.0" prefHeight="25.0" prefWidth="290.0" text="Direccion:" />
+            <Label fx:id="labelCedula" layoutX="460.0" layoutY="12.0" prefHeight="25.0" prefWidth="365.0" text="Cedula:" />
+            <Label fx:id="labelUsuario" layoutX="460.0" layoutY="105.0" prefHeight="25.0" prefWidth="387.0" text="Usuario:" />
+            <Label fx:id="labelContraseña" layoutX="304.0" layoutY="152.0" prefHeight="25.0" prefWidth="355.0" text="Contraseña:" />
+            <Label fx:id="labelCorreo" layoutX="460.0" layoutY="54.0" prefHeight="25.0" prefWidth="371.0" text="Correo:" />
+            <Label fx:id="labelEspecializacion" layoutX="304.0" layoutY="194.0" prefHeight="25.0" prefWidth="235.0" text="Especialización:" />
+            <Label fx:id="labelNumeroLicencia" layoutX="14.0" layoutY="194.0" prefHeight="25.0" prefWidth="286.0" text="Numero de licencia:" />
+            <Label fx:id="labelFechaInicioFirma" layoutX="547.0" layoutY="194.0" prefHeight="25.0" prefWidth="329.0" text="Fecha de inicio de la firma:" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

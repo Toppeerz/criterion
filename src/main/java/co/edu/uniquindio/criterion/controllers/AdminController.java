@@ -46,7 +46,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 @Component
 public class AdminController implements Initializable {
 
-    SceneController sceneController = new SceneController();
+    @Autowired
+    SceneController sceneController;
     ObservableList<Persona> listaPersonasObservable = FXCollections.observableArrayList();
     Persona personaSeleccionada;
     @Autowired
@@ -162,33 +163,23 @@ public class AdminController implements Initializable {
         String informacionVerificada = verificarInformacionPersona(nombre, cedula, telefono, correo, direccion, usuario,
                 contrasenia, txtTipoUsuario, txtEspecializacionAbogado, numeroLicencia);
 
+        if(personaSeleccionada == null){
+            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "No ha seleccionado una persona para actualizar",
+                    AlertType.WARNING);
+            return;
+        }
+
         if (!informacionVerificada.equalsIgnoreCase("Ok")) {
             mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, informacionVerificada, AlertType.WARNING);
             return;
         }
 
-        if (personaRepo.findById(cedula).orElse(null) == null) {
-            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "No existe una persona con esa cedula",
-                    AlertType.WARNING);
-            return;
-        }
-
-        if (personaRepo.findByNombreDeUsuario(usuario) != null && !personaRepo.findByNombreDeUsuario(usuario)
-                .getCedula().equalsIgnoreCase(cedula)) {
-            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "Ya existe una persona con ese nombre de usuario",
-                    AlertType.WARNING);
-            return;
-        }
-
-        if (personaRepo.findByEmail(correo) != null && !personaRepo.findByEmail(correo).getCedula()
-                .equalsIgnoreCase(cedula)) {
-            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "Ya existe una persona con ese correo",
-                    AlertType.WARNING);
+        if(!validaciones(cedula,correo,usuario)){
             return;
         }
 
         try {
-            crearPersonaPorTipo(nombre, cedula, telefono, correo, direccion, usuario, contrasenia, txtTipoUsuario,
+            actualizarPersonaPorTipo(nombre, cedula, telefono, correo, direccion, usuario, contrasenia, txtTipoUsuario,
                     txtEspecializacionAbogado, numeroLicencia);
             mostrarMensaje("Gestion de personas", "Informacion", "Persona actualizada con exito",
                     AlertType.INFORMATION);
@@ -206,6 +197,48 @@ public class AdminController implements Initializable {
                 }
             }
         }
+    }
+
+    private boolean validaciones(String cedula, String correo, String usuario) {
+        if (personaRepo.findById(cedula).orElse(null) == null) {
+            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "No existe una persona con esa cedula",
+                    AlertType.WARNING);
+            return false;
+        }
+
+        if (personaRepo.findByNombreDeUsuario(usuario) != null && !personaRepo.findByNombreDeUsuario(usuario)
+                .getCedula().equalsIgnoreCase(cedula)) {
+            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "Ya existe una persona con ese nombre de usuario",
+                    AlertType.WARNING);
+            return false;
+        }
+
+        if (personaRepo.findByEmail(correo) != null && !personaRepo.findByEmail(correo).getCedula()
+                .equalsIgnoreCase(cedula)) {
+            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "Ya existe una persona con ese correo",
+                    AlertType.WARNING);
+            return false;
+        }
+        return true;
+    }
+
+    private void actualizarPersonaPorTipo(String nombre, String cedula, String telefono, String correo,
+            String direccion, String usuario, String contrasenia, String txtTipoUsuario,
+            String txtEspecializacionAbogado, String numeroLicencia) {
+        personaSeleccionada.setNombre(nombre);
+        personaSeleccionada.setCedula(cedula);
+        personaSeleccionada.setTelefono(telefono);
+        personaSeleccionada.setEmail(correo);
+        personaSeleccionada.setDireccion(direccion);
+        personaSeleccionada.setNombreDeUsuario(usuario);
+        personaSeleccionada.setContraseña(contrasenia);
+        if (txtTipoUsuario.equalsIgnoreCase(ABOGADO)) {
+            ((Abogado) personaSeleccionada).setEspecializacion(Especializacion.valueOf(txtEspecializacionAbogado));
+            ((Abogado) personaSeleccionada).setNumeroDeLicencia(numeroLicencia);
+        }
+        personaRepo.save(personaSeleccionada);
+        refrescarTablaPersonas();
+        limpiarInterfazPersona();
     }
 
     @FXML
@@ -401,7 +434,7 @@ public class AdminController implements Initializable {
         }
 
         else {
-            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "No ha seleccionado un vendedor para eliminar",
+            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "No ha seleccionado una persona para eliminar",
                     AlertType.WARNING);
         }
 

@@ -1,33 +1,43 @@
 .text-field {
     -fx-background-color: transparent;
-    -fx-border-color: transparent;
+    background-color: transparent;
     -fx-border-width: 0 0 1 0;
+    border-width: 0 0 1 0;
     -fx-border-color: black;
+    border-color: black;
     -fx-text-fill: black;
 }
 
 .label {
     -fx-text-fill: black;
     -fx-font-size: 16px;
+    font-size: 16px;
     -fx-font-weight: bold;
+    font-weight: bold;
 }
+
 
 .button {
     -fx-background-color: white;
+    background-color: white;
     -fx-text-fill: black;
     -fx-border-radius: 0;
+    border-radius: 0;
     -fx-background-radius: 0;
     -fx-border-color: black;
+    border-color: black;
     -fx-border-width: 1;
-    -fx-border-radius: 0;
+    border-width: 1;
 }
 
 .button:hover {
     -fx-background-color: lightgray;
+    background-color: lightgray;
 }
 
 .button:pressed {
     -fx-background-color: gray;
+    background-color: gray;
 }
 
 #labelContrasenia{
@@ -36,16 +46,21 @@
 #txtError {
     -fx-text-fill: red;
     -fx-font-size: 16px;
+    font-size: 16px;
     -fx-font-weight: bold;
+    font-weight: bold;
     -fx-alignment: center;
 }
 .table-view .column-header {
     -fx-background-color: #f2f2f2;
+    background-color: #f2f2f2;
     -fx-text-fill: black;
-    -fx-font-weight: bold;
-    -fx-min-width: 100px; /* Ajusta este valor según tus necesidades */
+    -fx-font-weight: bold; /* Ajusta este valor según tus necesidades */
+    font-weight: bold;
     -fx-border-color: black; /* Color de la línea de separación */
+    border-color: black;
     -fx-border-width: 0 1px;
+    border-width: 0 1px;
 }
 
 .table-view .table-row-cell {
@@ -56,41 +71,54 @@
     -fx-text-fill: black;
     -fx-wrap-text: true;
     -fx-border-color: #000000; /* Color del borde */
+    border-color: #000000;
     -fx-border-width: 0.5;
+    border-width: 0.5;
 }
 
 .combo-box {
     -fx-background-color: white;
+    background-color: white;
     -fx-border-color: black;
+    border-color: black;
     -fx-border-width: 1;
+    border-width: 1;
     -fx-text-fill: black;
 }
 
 .combo-box .list-cell {
     -fx-background-color: white;
+    background-color: white;
     -fx-text-fill: black;
 }
 
 .combo-box .button {
     -fx-background-color: #f2f2f2;
+    background-color: #f2f2f2;
     -fx-border-color: black;
+    border-color: black;
     -fx-border-width: 1;
+    border-width: 1;
 }
 
 .combo-box .button .arrow {
     -fx-background-color: black;
+    background-color: black;
 }
 .combo-box .list-cell:hover {
     -fx-background-color:steelblue;
+    background-color:steelblue;
     -fx-text-fill: white;
 }
 .table-view .table-row-cell:selected {
     -fx-background: steelblue;
+    background: steelblue;
     -fx-text-fill: white;
 }
 
 .table-view .table-cell:selected {
     -fx-background: steelblue;
+    background: steelblue;
     -fx-text-fill: white;
 }
 

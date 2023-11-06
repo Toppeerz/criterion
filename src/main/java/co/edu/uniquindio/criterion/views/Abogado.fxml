@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="879.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.criterion.controllers.AbogadoController">
+   <top>
+      <AnchorPane prefHeight="75.0" prefWidth="650.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnCerrarSesion" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="114.0" text="&lt;-- Cerrar sesión" />
+            <Label blendMode="MULTIPLY" layoutX="33.0" layoutY="49.0" prefHeight="25.0" prefWidth="99.0" text="Mis casos" textAlignment="CENTER" textFill="#971b1b" />
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="879.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tablaCasos" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#abrirDetallesCaso" prefHeight="246.0" prefWidth="879.0">
+              <columns>
+                <TableColumn fx:id="columnaID" minWidth="1.0" prefWidth="34.0" text="ID" />
+                <TableColumn fx:id="columnaCliente" minWidth="-Infinity" prefWidth="122.0" text="Cliente" />
+                  <TableColumn fx:id="columnaAsesor" minWidth="-Infinity" prefWidth="117.0" text="Asesor" />
+                  <TableColumn fx:id="columnaDescripcion" minWidth="-Infinity" prefWidth="161.0" text="Descripcion" />
+                  <TableColumn fx:id="columnaEstado" minWidth="-Infinity" prefWidth="84.0" text="Estado" />
+                  <TableColumn fx:id="columnaFechaInicio" minWidth="-Infinity" prefWidth="119.0" text="Fecha de inicio" />
+                  <TableColumn fx:id="columnaFechaCierre" minWidth="-Infinity" prefWidth="119.0" text="Fecha de cierre" />
+                  <TableColumn fx:id="columnaEspecializacion" minWidth="-Infinity" prefWidth="120.0" text="Especializacion" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <TextField fx:id="buscador" layoutX="117.0" layoutY="1.0" prefHeight="26.0" prefWidth="270.0" />
+            <Label layoutX="33.0" layoutY="1.0" prefHeight="25.0" prefWidth="77.0" text="Buscar:" />
+            <Button fx:id="btnResolverCaso" layoutX="274.0" layoutY="300.0" mnemonicParsing="false" onAction="#resolverCaso" prefHeight="27.0" prefWidth="113.0" text="Resolver caso" />
+            <Button fx:id="btnCerrarCaso" layoutX="440.0" layoutY="300.0" mnemonicParsing="false" onAction="#cerrarCaso" prefHeight="27.0" prefWidth="113.0" text="Cerrar caso" />
+            <Button fx:id="btnActualizarInfo" layoutX="321.0" layoutY="372.0" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="27.0" prefWidth="175.0" text="Actualizar mi información" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
