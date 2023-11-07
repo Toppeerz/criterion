@@ -2,23 +2,18 @@ package co.edu.uniquindio.criterion.controllers;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 import co.edu.uniquindio.criterion.model.Caso;
-
 import co.edu.uniquindio.criterion.model.Especializacion;
 import co.edu.uniquindio.criterion.model.EstadoCaso;
-import co.edu.uniquindio.criterion.model.Factura;
 import co.edu.uniquindio.criterion.model.Persona;
 import co.edu.uniquindio.criterion.repositories.CasoRepo;
 import co.edu.uniquindio.criterion.repositories.FacturaRepo;
 import javafx.beans.property.SimpleStringProperty;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -32,24 +27,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
-
 @Component
-public class AbogadoController implements Initializable {
+public class ClienteController implements Initializable{
 
     @Autowired
     private SceneController sceneController;
     private ObservableList<Caso> listaCasosObservable = FXCollections.observableArrayList();
     private Caso casoSeleccionado;
-    @Autowired
-    CasoRepo casoRepo;
-    @Autowired
-    FacturaRepo facturaRepo;
     private static final String VALIDACION_DATOS = "Validacion de datos";
+    @Autowired
+    private CasoRepo casoRepo;
+    private Persona personaLogueada;
+    @Autowired
+    private FacturaRepo facturaRepo;
 
     @FXML
     private Button btnActualizarInfo;
@@ -70,7 +64,7 @@ public class AbogadoController implements Initializable {
     private TableColumn<Caso, String> columnaAsesor;
 
     @FXML
-    private TableColumn<Caso, String> columnaCliente;
+    private TableColumn<Caso, String> columnaAbogado;
 
     @FXML
     private TableColumn<Caso, String> columnaDescripcion;
@@ -91,11 +85,42 @@ public class AbogadoController implements Initializable {
     private TableColumn<Caso, Integer> columnaID;
 
     @FXML
-    private TextField txtTotal;
+    private TableView<Caso> tablaCasos;
 
     @FXML
-    private TableView<Caso> tablaCasos;
-    private Persona personaLogueada;
+    private Button btnPagar;
+
+    @FXML
+    void pagar(ActionEvent event) {
+        if(casoSeleccionado == null){
+            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "Debe seleccionar un caso para poder pagarlo",
+                            AlertType.WARNING);
+            return;
+        }
+        if(casoSeleccionado.getEstadoCaso() !=  EstadoCaso.CERRADO){
+            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "El caso debe estar cerrado para poder ser pagado",
+                            AlertType.WARNING);
+            return;
+        }
+        if(Boolean.TRUE.equals(casoSeleccionado.getFactura().getEstadoDePago())){
+            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "El caso ya ha sido pagado",
+                            AlertType.WARNING);
+            return;
+        }
+        casoSeleccionado.getFactura().setEstadoDePago(true);
+        facturaRepo.save(casoSeleccionado.getFactura());
+        refrescarTablaCasos();
+        mostrarMensaje("Gestion de pagos", "Informacion", "Pago realizado con exito",
+                    AlertType.INFORMATION);
+    }
+
+    private void mostrarMensaje(String titulo, String header, String contenido, AlertType information) {
+        Alert alert = new Alert(information);
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
 
     @FXML
     void abrirDetallesCaso(MouseEvent event) {
@@ -109,86 +134,8 @@ public class AbogadoController implements Initializable {
     }
 
     @FXML
-    void actualizarInfo(ActionEvent event) {
-        sceneController.cambiarAActualizarInfo(event);
-    }
-
-    @FXML
-    void cerrarCaso(ActionEvent event) {
-        cerrarCaso();
-    }
-
-    private void cerrarCaso() {
-        if (casoSeleccionado != null) {
-            if (casoSeleccionado.getEstadoCaso() == EstadoCaso.EN_PROCESO) {
-                if(txtTotal.getText().isBlank() || txtTotal.getText().isEmpty()){
-                    mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "Debe ingresar el total de la factura",
-                        AlertType.WARNING);
-                } else if (!isNumeric(txtTotal.getText())){
-                    mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "El total debe ser numerico",
-                        AlertType.WARNING);
-                }
-                else{
-                casoSeleccionado.setEstadoCaso(EstadoCaso.CERRADO);
-                Factura factura = new Factura(LocalDateTime.now(), Double.valueOf(txtTotal.getText()) , false, casoSeleccionado);
-                casoSeleccionado.setFactura(factura);
-                facturaRepo.save(factura);
-                casoRepo.save(casoSeleccionado);
-                refrescarTablaCasos();
-                casoSeleccionado = null;
-                mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "Caso cerrado con exito",
-                        AlertType.INFORMATION);
-                    }
-            } 
-            else {
-                mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS,
-                        "El caso no ha sido iniciado a resolver o ya fue cerrado/cancelado",
-                        AlertType.WARNING);
-            }
-        } else {
-            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "No ha seleccionado un caso para cerrar",
-                    AlertType.WARNING);
-        }
-    }
-
-    private boolean isNumeric(String string) {
-        return string.matches("\\d+");
-    }
-    @FXML
     void cerrarSesion(ActionEvent event) {
         sceneController.cambiarALogin(event);
-    }
-
-    @FXML
-    void resolverCaso(ActionEvent event) {
-        resolverCaso();
-    }
-
-    private void resolverCaso() {
-        if (casoSeleccionado != null) {
-            if (casoSeleccionado.getEstadoCaso() == EstadoCaso.ABIERTO) {
-                casoSeleccionado.setEstadoCaso(EstadoCaso.EN_PROCESO);
-                casoRepo.save(casoSeleccionado);
-                refrescarTablaCasos();
-                casoSeleccionado = null;
-                mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "Caso iniciado a resolver con exito",
-                        AlertType.INFORMATION);
-            } else {
-                mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "El caso ya esta siendo resuelto o ya fue cerrado y/o cancelado",
-                        AlertType.WARNING);
-            }
-        } else {
-            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "No ha seleccionado un caso para iniciar a resolver",
-                    AlertType.WARNING);
-        }
-    }
-
-    private void mostrarMensaje(String titulo, String header, String contenido, AlertType information) {
-        Alert alert = new Alert(information);
-        alert.setTitle(titulo);
-        alert.setHeaderText(header);
-        alert.setContentText(contenido);
-        alert.showAndWait();
     }
 
     @Override
@@ -213,7 +160,7 @@ public class AbogadoController implements Initializable {
 
             if (String.valueOf(caso.getId()).toLowerCase().contains(lowerCaseFilter)) {
                 return true;
-            } else if (caso.getCliente().getNombre().toLowerCase().contains(lowerCaseFilter)) {
+            } else if (caso.getAbogado().getNombre().toLowerCase().contains(lowerCaseFilter)) {
                 return true;
             } else if (caso.getAsesorCaso().getNombre().toLowerCase().contains(lowerCaseFilter)) {
                 return true;
@@ -239,7 +186,7 @@ public class AbogadoController implements Initializable {
 
     private void inicializarTablaCasos() {
         this.columnaAsesor.setCellValueFactory(a -> new SimpleStringProperty(a.getValue().getAsesorCaso().getNombre()));
-        this.columnaCliente.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCliente().getNombre()));
+        this.columnaAbogado.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getAbogado().getNombre()));
         this.columnaDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         this.columnaEspecializacion.setCellValueFactory(new PropertyValueFactory<>("especializacion"));
         this.columnaEstado.setCellValueFactory(new PropertyValueFactory<>("estadoCaso"));
@@ -250,12 +197,10 @@ public class AbogadoController implements Initializable {
 
     private void refrescarTablaCasos() {
         listaCasosObservable.clear();
+        listaCasosObservable.addAll(casoRepo.findAllByCliente_Cedula(personaLogueada.getCedula()));
 
-        for (Caso caso : casoRepo.findAllByAbogado_Cedula(personaLogueada.getCedula())) {
-
-            listaCasosObservable.add(caso);
-
-        }
+        
     }
+
 
 }

@@ -163,7 +163,7 @@ public class AdminController implements Initializable {
         String informacionVerificada = verificarInformacionPersona(nombre, cedula, telefono, correo, direccion, usuario,
                 contrasenia, txtTipoUsuario, txtEspecializacionAbogado, numeroLicencia);
 
-        if(personaSeleccionada == null){
+        if (personaSeleccionada == null) {
             mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "No ha seleccionado una persona para actualizar",
                     AlertType.WARNING);
             return;
@@ -174,7 +174,7 @@ public class AdminController implements Initializable {
             return;
         }
 
-        if(!validaciones(cedula,correo,usuario)){
+        if (!validaciones(cedula, correo, usuario)) {
             return;
         }
 

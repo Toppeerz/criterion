@@ -121,5 +121,17 @@
     background: steelblue;
     -fx-text-fill: white;
 }
-
+#labelTituloDocumentoCSS,#labelContenidoDocumentoCSS,#labelFechaDocumentoCSS,#labelAsuntoReunionCSS,#labelNotasReunionCSS,#labelFechaReunionCSS,#labelUbicacionReunionCSS {
+    -fx-font-size: 24px;
+    font-size: 24px;
+}
+.text-area{
+    -fx-background-color: transparent;
+    background-color: transparent;
+    -fx-border-width: 1 1 1 1;
+    border-width: 1 1 1 1;
+    -fx-border-color: black;
+    border-color: black;
+    -fx-text-fill: black;
+}
 

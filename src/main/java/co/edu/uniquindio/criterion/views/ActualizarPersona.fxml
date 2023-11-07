@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="879.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.criterion.controllers.ActualizarPersonaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="879.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.criterion.controllers.ActualizarPersonaController">
    <top>
       <AnchorPane prefHeight="75.0" prefWidth="650.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnVolver" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#volver" prefHeight="25.0" prefWidth="114.0" text="&lt;-- Cerrar sesión" />
+            <Button fx:id="btnVolver" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#volver" prefHeight="25.0" prefWidth="114.0" text="&lt;-- Volver" />
             <Label blendMode="MULTIPLY" layoutX="379.0" layoutY="29.0" prefHeight="25.0" prefWidth="122.0" text="Mi Información" textAlignment="CENTER" textFill="#971b1b" />
          </children>
       </AnchorPane>

@@ -197,6 +197,11 @@ public class AsesorController implements Initializable{
             return;
         }
 
+        if(casoSeleccionado.getEstadoCaso() == EstadoCaso.CERRADO){
+            mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, "No se puede actualizar un caso cerrado", AlertType.WARNING);
+            return;
+        }
+
         if (!informacionVerificada.equalsIgnoreCase("Ok")) {
             mostrarMensaje(VALIDACION_DATOS, VALIDACION_DATOS, informacionVerificada, AlertType.WARNING);
             return;

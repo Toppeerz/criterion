@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="879.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.criterion.controllers.AbogadoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="879.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.criterion.controllers.ClienteController">
    <top>
       <AnchorPane prefHeight="75.0" prefWidth="650.0" BorderPane.alignment="CENTER">
          <children>
@@ -23,7 +23,7 @@
             <TableView fx:id="tablaCasos" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#abrirDetallesCaso" prefHeight="246.0" prefWidth="879.0">
               <columns>
                 <TableColumn fx:id="columnaID" minWidth="1.0" prefWidth="34.0" text="ID" />
-                <TableColumn fx:id="columnaCliente" minWidth="-Infinity" prefWidth="122.0" text="Cliente" />
+                <TableColumn fx:id="columnaAbogado" minWidth="-Infinity" prefWidth="122.0" text="Abogado" />
                   <TableColumn fx:id="columnaAsesor" minWidth="-Infinity" prefWidth="117.0" text="Asesor" />
                   <TableColumn fx:id="columnaDescripcion" minWidth="-Infinity" prefWidth="161.0" text="Descripcion" />
                   <TableColumn fx:id="columnaEstado" minWidth="-Infinity" prefWidth="84.0" text="Estado" />
@@ -37,11 +37,7 @@
             </TableView>
             <TextField fx:id="buscador" layoutX="117.0" layoutY="1.0" prefHeight="26.0" prefWidth="270.0" />
             <Label layoutX="33.0" layoutY="1.0" prefHeight="25.0" prefWidth="77.0" text="Buscar:" />
-            <Button fx:id="btnResolverCaso" layoutX="87.0" layoutY="300.0" mnemonicParsing="false" onAction="#resolverCaso" prefHeight="27.0" prefWidth="113.0" text="Resolver caso" />
-            <Button fx:id="btnCerrarCaso" layoutX="677.0" layoutY="300.0" mnemonicParsing="false" onAction="#cerrarCaso" prefHeight="27.0" prefWidth="113.0" text="Cerrar caso" />
-            <Button fx:id="btnActualizarInfo" layoutX="321.0" layoutY="372.0" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="27.0" prefWidth="175.0" text="Actualizar mi información" />
-            <Label layoutX="363.0" layoutY="301.0" prefHeight="25.0" prefWidth="77.0" text="Total:" />
-            <TextField fx:id="txtTotal" layoutX="446.0" layoutY="301.0" prefHeight="26.0" prefWidth="179.0" />
+            <Button fx:id="btnPagar" layoutX="414.0" layoutY="323.0" mnemonicParsing="false" onAction="#pagar" text="Pagar" />
          </children>
       </AnchorPane>
    </center>

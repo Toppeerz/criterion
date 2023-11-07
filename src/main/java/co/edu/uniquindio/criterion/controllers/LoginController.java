@@ -1,7 +1,5 @@
 package co.edu.uniquindio.criterion.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,18 +7,18 @@ import org.springframework.stereotype.Component;
 import co.edu.uniquindio.criterion.model.Abogado;
 import co.edu.uniquindio.criterion.model.Admin;
 import co.edu.uniquindio.criterion.model.Asesor;
+import co.edu.uniquindio.criterion.model.Cliente;
 import co.edu.uniquindio.criterion.model.Persona;
 import co.edu.uniquindio.criterion.repositories.PersonaRepo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 @Component
-public class LoginController implements Initializable {
+public class LoginController {
 
     @Autowired
     private PersonaRepo personaRepo;
@@ -59,6 +57,8 @@ public class LoginController implements Initializable {
                         abrirVentanaAsesor(event, persona);
 		            }else if(persona instanceof Admin){
                         abrirVentanaAdmin(event);
+                    }else if(persona instanceof Cliente){
+                        abrirVentanaCliente(event, persona);
                     }
                 }
             else{
@@ -67,6 +67,10 @@ public class LoginController implements Initializable {
     }else{
         txtError.setText("No hay existe un usuario con ese nombre");
     }
+    }
+
+    private void abrirVentanaCliente(ActionEvent event, Persona persona) {
+        sceneController.cambiarAVistaCliente(event, persona);
     }
 
     private void abrirVentanaAsesor(ActionEvent event, Persona persona) {
@@ -82,8 +86,5 @@ public class LoginController implements Initializable {
         
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        //xd
-    }
+
 }

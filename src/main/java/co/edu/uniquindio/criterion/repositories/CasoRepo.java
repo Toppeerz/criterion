@@ -13,4 +13,5 @@ public interface CasoRepo extends JpaRepository<Caso, Integer> {
 
     List<Caso> findAllByAbogado_Cedula(String cedula);
     List<Caso> findAllByAsesorCaso_Cedula(String cedula);
+    List<Caso> findAllByCliente_Cedula(String cedula);
 }

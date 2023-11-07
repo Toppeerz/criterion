@@ -60,9 +60,9 @@ public class Caso implements Serializable {
     @ToString.Exclude
     private List<Reunion> reuniones = new ArrayList<>();
 
-    @OneToMany(mappedBy = "caso", cascade = CascadeType.REMOVE)
+    @OneToOne(mappedBy = "caso", cascade = CascadeType.REMOVE)
     @ToString.Exclude
-    private List<Factura> facturas = new ArrayList<>();
+    private Factura factura;
 
     @ManyToOne
     @NotNull

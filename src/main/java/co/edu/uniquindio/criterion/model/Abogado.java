@@ -13,7 +13,7 @@ import java.util.*;
 @NoArgsConstructor
 @ToString(callSuper = true)
 public class Abogado extends Persona {
-
+    
     @Column(nullable = false, length = 100, unique = true)
     @NotEmpty(message = "Debe ingresar el numero de licencia del abogado")
     private String numeroDeLicencia;
